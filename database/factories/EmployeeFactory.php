@@ -15,8 +15,10 @@ class EmployeeFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Employee::class;
     public function definition(): array
     {
+
         return [
 
             'first_name' => $this->faker->firstName,

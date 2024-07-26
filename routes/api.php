@@ -37,3 +37,6 @@ Route::get('business_trips/{id}', [BusinessTripController::class, 'show']);
 Route::put('business_trips/{id}', [BusinessTripController::class, 'update']);
 Route::delete('business_trips/{id}', [BusinessTripController::class, 'destroy']);
 
+Route::get('api/documentation', function () {
+    return view('swagger.index');
+});
