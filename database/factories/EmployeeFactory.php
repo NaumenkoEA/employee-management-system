@@ -21,8 +21,9 @@ class EmployeeFactory extends Factory
 
             'first_name' => $this->faker->firstName,
             'middle_name' => $this->faker->name,
-            'position' => $this->faker->word,
-            'hire_date' => $this->faker->date,
+            'last_name' => $this->faker->lastName,
+            'position' => $this->faker->jobTitle,
+            'hire_date' => $this->faker->date(),
             'salary' => $this->faker->numberBetween(30000, 100000),
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->email,
