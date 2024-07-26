@@ -10,7 +10,7 @@ class PositionController extends Controller
 
     public function index()
     {
-        Position::all('departments');
+        return Position::all();
     }
 
     /**

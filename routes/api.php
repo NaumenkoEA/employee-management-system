@@ -9,7 +9,8 @@ use App\Http\Controllers\SickLeaveController;
 use App\Http\Controllers\BusinessTripController;
 
 Route::apiResource('employees', EmployeeController::class);
-Route::apiResource('employee-photos', EmployeePhotoController::class);
+Route::get('employees/{id}/photo', [EmployeePhotoController::class, 'show']);
+Route::post('employees/{id}/photo', [EmployeePhotoController::class, 'store']);
 Route::apiResource('positions', PositionController::class);
 Route::apiResource('leaves', VacationController::class);
 Route::apiResource('sick-leaves', SickLeaveController::class);
