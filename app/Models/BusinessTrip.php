@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class BusinessTrip extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'employee_id', 'start_date', 'end_date', 'destination', 'purpose'
+    ];
+
+    public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

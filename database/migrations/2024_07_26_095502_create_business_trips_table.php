@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignID('employee_id')->constrained()->ondelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('goal_business trip');
+            $table->string('goal_business_trip');
             $table->string('country');
             $table->string('city');
             $table->timestamps();

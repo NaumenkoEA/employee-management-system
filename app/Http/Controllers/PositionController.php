@@ -10,54 +10,34 @@ class PositionController extends Controller
 
     public function index()
     {
-        return Position::all();
+        $positions = Position::with('department')->get();
+        return response()->json($positions);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function assign(Request $request, $employee_id)
     {
-        //
+        $request->validate([
+            'position_id' => 'required|exists:positions,id',
+        ]);
+
+        $employee = Employee::findOrFail($employee_id);
+        $employee->position_id = $request->position_id;
+        $employee->save();
+
+        return response()->json($employee, 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $position = Position::with('department')->findOrFail($id);
+        return response()->json($position);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function employeePosition($id)
     {
-        //
+        $employee = Employee::with('position')->findOrFail($id);
+        return response()->json($employee->position);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
