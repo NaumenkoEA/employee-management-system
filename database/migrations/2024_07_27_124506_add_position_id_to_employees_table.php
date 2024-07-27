@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class AddPositionIdToEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('employees', function (Blueprint $table) {
+            // Добавляем колонку position_id
             $table->foreignId('position_id')->nullable()->constrained()->onDelete('set null');
         });
     }
@@ -22,8 +23,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('employees', function (Blueprint $table) {
+            // Удаляем внешний ключ и колонку position_id
             $table->dropForeign(['position_id']);
             $table->dropColumn('position_id');
         });
     }
-};
+}
