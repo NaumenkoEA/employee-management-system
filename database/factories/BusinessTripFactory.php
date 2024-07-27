@@ -20,13 +20,19 @@ class BusinessTripFactory extends Factory
 
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('ru_RU');
+
+        $startDate = $faker->dateTimeBetween('-3 year', 'now');
+
+        $endDate = $faker->dateTimeBetween($startDate, '+2 months');
+
         return [
             'employee_id' => Employee::factory(),
-            'start_date' => $this->faker->date(),
-            'end_date' => $this->faker->date(),
-            'goal_business_trip' => $this->faker->sentence,
-            'country' => $this->faker->country,
-            'city' => $this->faker->city,
+            'start_date' => $startDate->format('Y-m-d'),
+            'end_date' => $endDate->format('Y-m-d'),
+            'goal_business_trip' => $faker->sentence,
+            'country' => $faker->country,
+            'city' => $faker->city,
         ];
     }
 }

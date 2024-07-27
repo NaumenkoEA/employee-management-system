@@ -18,7 +18,7 @@ Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.
 Route::get('/employees/{id}/photo', [EmployeePhotoController::class, 'show']);
 Route::post('/employees/{id}/photo', [EmployeePhotoController::class, 'store']);
 
-Route::get('/departments', [DepartmentController::class, 'index']);
+Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
 
 Route::get('/positions', [PositionController::class, 'index']);
 Route::get('/positions/{id}', [PositionController::class, 'show']);

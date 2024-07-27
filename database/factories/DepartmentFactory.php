@@ -19,8 +19,23 @@ class DepartmentFactory extends Factory
 
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('ru_RU');
+
+        $departments = [
+            'Отдел маркетинга',
+            'Отдел продаж',
+            'Бухгалтерия',
+            'HR отдел',
+            'IT отдел',
+            'Юридический отдел',
+            'Отдел логистики',
+            'Производственный отдел',
+            'Отдел закупок',
+            'Отдел обслуживания клиентов',
+        ];
+
         return [
-            'name' => $this->faker->company,
+            'name' => $faker->randomElement($departments),
         ];
     }
 }

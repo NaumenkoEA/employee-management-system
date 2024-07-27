@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Department;
 use App\Models\Employee;
+use App\Models\Position;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,20 +20,23 @@ class EmployeeFactory extends Factory
     protected $model = Employee::class;
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('ru_RU');
 
         return [
 
-            'first_name' => $this->faker->firstName,
-            'middle_name' => $this->faker->name,
-            'last_name' => $this->faker->lastName,
-            'position' => $this->faker->jobTitle,
-            'hire_date' => $this->faker->date(),
-            'salary' => $this->faker->numberBetween(30000, 100000),
-            'phone' => $this->faker->phoneNumber,
-            'email' => $this->faker->email,
-            'birth_date' => $this->faker->date,
-            'gender' => $this->faker->randomElement(['male', 'female']),
-            'address' => $this->faker->address,
+
+            'last_name' => $faker->lastName, // Фамилия
+            'first_name' => $faker->firstName, // Имя
+            'middle_name' => $faker->middleName, //Отчество
+            'position_id' => Position::factory(), // Генерация должности
+            'department_id' => Department::factory(), // Генерация отдела
+            'hire_date' => $faker->dateTimeBetween('-20 years', '-1 years')->format('Y-m-d'),
+            'salary' => $faker->numberBetween(30000, 100000),
+            'phone' => $faker->phoneNumber,
+            'email' => $faker->email,
+            'birth_date' => $faker->dateTimeBetween('-50 years', '-18 years')->format('Y-m-d'),
+            'gender' => $faker->randomElement(['male', 'female']),
+            'address' => $faker->address,
         ];
     }
 }

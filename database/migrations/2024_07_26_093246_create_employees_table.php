@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name')->nullable();
-            $table->string('position');
+            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('department_id');
             $table->date('hire_date');
             $table->decimal('salary');
             $table->string('phone');

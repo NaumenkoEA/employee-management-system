@@ -20,9 +20,25 @@ class PositionFactory extends Factory
 
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('ru_RU');
+
+        // Список возможных должностей
+        $positions = [
+            'Менеджер',
+            'Разработчик',
+            'Аналитик',
+            'Бухгалтер',
+            'Специалист по продажам',
+            'HR-менеджер',
+            'Юрист',
+            'Инженер',
+            'Секретарь',
+            'Рекрутер',
+            'Директор'
+        ];
+
         return [
-            'title' => $this->faker->jobTitle,
-            'department_id' => Department::factory(),
+            'title' => $faker->randomElement($positions),
         ];
     }
 }

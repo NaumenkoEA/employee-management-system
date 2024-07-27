@@ -8,12 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'first_name', 'last_name', 'middle_name', 'position', 'hire_date',
-        'salary', 'phone', 'email', 'birth_date', 'gender', 'address'
+        'first_name',
+        'middle_name',
+        'last_name',
+        'position_id',
+        'department_id',
+        'hire_date',
+        'salary',
+        'phone',
+        'email',
+        'birth_date',
+        'gender',
+        'address',
     ];
-    public function photo()
+
+    public function position(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasOne(EmployeePhoto::class);
+        return $this->belongsTo(Position::class);
+    }
+
+    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Department::class);
     }
 }

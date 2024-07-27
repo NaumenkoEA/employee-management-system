@@ -18,10 +18,16 @@ class VacationFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('ru_RU');
+
+        $startDate = $faker->dateTimeBetween('-3 year', 'now');
+
+        $endDate = $faker->dateTimeBetween($startDate, '+40 days');
+
         return [
             'employee_id' => Employee::factory(),
-            'start_date' => $this->faker->date(),
-            'end_date' => $this->faker->date(),
+            'start_date' => $startDate->format('Y-m-d'),
+            'end_date' => $endDate->format('Y-m-d'),
             'reason' => $this->faker->sentence,
         ];
     }

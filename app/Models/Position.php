@@ -9,10 +9,10 @@ class Position extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'department_id'];
+    protected $fillable = ['title'];
 
-    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employees(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->belongsTo(Department::class, 'department_id');
+        return $this->hasMany(Employee::class);
     }
 }
