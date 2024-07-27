@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
+
+    public function positions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Position::class, 'department_id');
+    }
 }
