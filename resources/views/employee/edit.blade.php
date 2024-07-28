@@ -52,16 +52,26 @@
 
         <div class="m-2 ">
             <label for="position_id" class="block text-gray-700">Должность:</label>
-            <input type="text" name="position_id" id="position_id"
-                   class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2"
-                   value="{{ $employee->position_id }}">
+            <select name="position_id" id="position_id"
+                    class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                @foreach($positions as $position)
+                    <option value="{{ $position->id }}" {{ $employee->position_id == $position->id ? 'selected' : '' }}>
+                        {{ $position->title }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <div class="m-2 ">
             <label for="department_id" class="block text-gray-700">Отдел:</label>
-            <input type="text" name="department_id" id="department_id"
-                   class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2"
-                   value="{{ $employee->department_id }}">
+            <select name="department_id" id="department_id"
+                    class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                @foreach($departments as $department)
+                    <option value="{{ $department->id }}" {{ $employee->department_id == $department->id ? 'selected' : '' }}>
+                        {{ $department->name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <div class="m-2 ">

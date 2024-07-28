@@ -24,13 +24,9 @@ Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('
 Route::get('/employees/{id}/photo', [EmployeePhotoController::class, 'show']);
 Route::post('/employees/{id}/photo', [EmployeePhotoController::class, 'store']);
 
-Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
 
+Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
 Route::get('/positions', [PositionController::class, 'index'])->name('positions.index');
-Route::get('/positions/{id}', [PositionController::class, 'show']);
-Route::get('/employees/{employee_id}/assign-position', [PositionController::class, 'showAssignForm'])->name('positions.showAssignForm');
-Route::post('/employees/{employee_id}/assign-position', [PositionController::class, 'assign'])->name('positions.assign');
-Route::get('/employees/{id}/position', [PositionController::class, 'employeePosition']);
 
 Route::get('/employees/{employee_id}/leaves', [VacationController::class, 'index']);
 Route::post('/employees/{employee_id}/leaves', [VacationController::class, 'store']);

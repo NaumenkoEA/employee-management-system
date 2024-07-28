@@ -40,7 +40,7 @@ class EmployeeController extends Controller
 
         $employee = Employee::create($data);
 
-        return redirect()->route('employees.index')->with('success', 'Сотрудник успешно добавлен');
+        return redirect()->route('employee.index')->with('success', 'Сотрудник успешно добавлен');
     }
 
     public function show($id)
@@ -52,14 +52,18 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employee.edit', compact('employee'));
+        $positions = Position::all();
+        $departments = Department::all();
+
+        return view('employee.edit', compact('employee', 'positions', 'departments'));
     }
+
 
     public function update(Request $request, $id)
     {
         $employee = Employee::findOrFail($id);
         $employee->update($request->all());
-        return redirect()->route('employees.index')->with('success', 'Информация о сотруднике успешно обновлена');
+        return redirect()->route('employee.index')->with('success', 'Информация о сотруднике успешно обновлена');
     }
 
     public function destroy($id)
@@ -67,6 +71,6 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete();
 
-        return redirect()->route('employees.index')->with('success', 'Сотрудник успешно удален');
+        return redirect()->route('employee.index')->with('success', 'Сотрудник успешно удален');
     }
 }
