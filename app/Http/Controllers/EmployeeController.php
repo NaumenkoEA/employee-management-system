@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employee;
+use App\Models\Position;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -14,14 +16,31 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        return view('employee.create');
+        $positions = Position::all();
+        $departments = Department::all();
+        return view('employee.create', compact('positions', 'departments'));
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'middle_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'gender' => 'required|in:male,female',
+            'position_id' => 'required|exists:positions,id',
+            'department_id' => 'required|exists:departments,id',
+            'hire_date' => 'required|date',
+            'salary' => 'required|numeric',
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'birth_date' => 'required|date',
+            'address' => 'required|string|max:255',
+        ]);
+
         $employee = Employee::create($data);
-        return redirect()->route('employees.index')->with('success', 'Сотрудник успешно создан');
+
+        return redirect()->route('employees.index')->with('success', 'Сотрудник успешно добавлен');
     }
 
     public function show($id)

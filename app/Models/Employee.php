@@ -10,18 +10,8 @@ class Employee extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'middle_name',
-        'last_name',
-        'position_id',
-        'department_id',
-        'hire_date',
-        'salary',
-        'phone',
-        'email',
-        'birth_date',
-        'gender',
-        'address',
+        'first_name', 'middle_name', 'last_name', 'gender', 'position_id',
+        'department_id', 'hire_date', 'salary', 'phone', 'email', 'birth_date', 'address'
     ];
 
     public function position(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -39,7 +29,6 @@ class Employee extends Model
         return $this->hasMany(BusinessTrip::class);
     }
 
-    // Добавьте другие отношения
     public function vacations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Vacation::class);

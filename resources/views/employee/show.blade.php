@@ -31,12 +31,16 @@
             <td>{{ $employee->last_name }}</td>
         </tr>
         <tr>
+            <th>Пол:</th>
+            <td>{{ $employee->gender }}</td>
+        </tr>
+        <tr>
             <th>Должность:</th>
-            <td>{{ $employee->position_id }}</td>
+            <td>{{ $employee->position->title}}</td>
         </tr>
         <tr>
             <th>Отдел:</th>
-            <td>{{ $employee->department_id }}</td>
+            <td>{{ $employee->department->name }}</td>
         </tr>
         <tr>
             <th>Дата приема на работу:</th>
