@@ -12,7 +12,7 @@ class SickLeave extends Model
         'employee_id', 'start_date', 'end_date', 'reason'
     ];
 
-    public function employee()
+    public function employees()
     {
         return $this->belongsTo(Employee::class);
     }

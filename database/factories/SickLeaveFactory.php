@@ -27,7 +27,7 @@ class SickLeaveFactory extends Factory
         $endDate = $faker->dateTimeBetween($startDate, '+4 months');
 
         return [
-            'employee_id' => Employee::factory(),
+            'employee_id' => Employee::inRandomOrder()->first()->id,
             'start_date' => $startDate->format('Y-m-d'),
             'end_date' => $endDate->format('Y-m-d'),
             'reason' => $faker->sentence,

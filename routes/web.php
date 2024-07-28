@@ -28,20 +28,24 @@ Route::post('/employees/{id}/photo', [EmployeePhotoController::class, 'store']);
 Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
 Route::get('/positions', [PositionController::class, 'index'])->name('positions.index');
 
-Route::get('/employees/{employee_id}/leaves', [VacationController::class, 'index']);
-Route::post('/employees/{employee_id}/leaves', [VacationController::class, 'store']);
-Route::put('/leaves/{id}', [VacationController::class, 'update']);
-Route::delete('/leaves/{id}', [VacationController::class, 'destroy']);
+Route::get('employees/{employee}/vacations', [VacationController::class, 'index'])->name('vacations.index');
+Route::get('employees/{employee}/vacations/create', [VacationController::class, 'create'])->name('vacations.create');
+Route::post('employees/{employee}/vacations', [VacationController::class, 'store'])->name('vacations.store');
+Route::get('employees/{employee}/vacations/{vacation}/edit', [VacationController::class, 'edit'])->name('vacations.edit');
+Route::put('employees/{employee}/vacations/{vacation}', [VacationController::class, 'update'])->name('vacations.update');
+Route::delete('employees/{employee}/vacations/{vacation}', [VacationController::class, 'destroy'])->name('vacations.destroy');
 
-Route::get('/employees/{employee_id}/sick_leaves', [SickLeaveController::class, 'index']);
-Route::post('/employees/{employee_id}/sick_leaves', [SickLeaveController::class, 'store']);
-Route::get('/sick_leaves/{id}', [SickLeaveController::class, 'show']);
-Route::put('/sick_leaves/{id}', [SickLeaveController::class, 'update']);
-Route::delete('/sick_leaves/{id}', [SickLeaveController::class, 'destroy']);
 
-Route::get('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'index']);
-Route::post('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'store']);
-Route::get('/business_trips/{id}', [BusinessTripController::class, 'show']);
-Route::put('/business_trips/{id}', [BusinessTripController::class, 'update']);
-Route::delete('/business_trips/{id}', [BusinessTripController::class, 'destroy']);
+
+//Route::get('/employees/{employee_id}/sick_leaves', [SickLeaveController::class, 'index']);
+//Route::post('/employees/{employee_id}/sick_leaves', [SickLeaveController::class, 'store']);
+//Route::get('/sick_leaves/{id}', [SickLeaveController::class, 'show']);
+//Route::put('/sick_leaves/{id}', [SickLeaveController::class, 'update']);
+//Route::delete('/sick_leaves/{id}', [SickLeaveController::class, 'destroy']);
+//
+//Route::get('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'index']);
+//Route::post('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'store']);
+//Route::get('/business_trips/{id}', [BusinessTripController::class, 'show']);
+//Route::put('/business_trips/{id}', [BusinessTripController::class, 'update']);
+//Route::delete('/business_trips/{id}', [BusinessTripController::class, 'destroy']);
 

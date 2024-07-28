@@ -3,14 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vacation;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class VacationController extends Controller
 {
     public function index($employee_id)
     {
-        $leaves = Vacation::where('employee_id', $employee_id)->get();
-        return response()->json($leaves);
+        // Загрузка сотрудника и его отпусков
+        $employee = Employee::with('vacations')->findOrFail($employee_id);
+        return view('vacations.index', compact('employee'));
+    }
+
+
+
+    public function create($employee_id)
+    {
+        $employee = Employee::findOrFail($employee_id);
+        return view('vacations.create', compact('employee'));
     }
 
     public function store(Request $request, $employee_id)
@@ -18,39 +28,42 @@ class VacationController extends Controller
         $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'reason' => 'nullable|string',
+            'reason' => 'nullable|string'
         ]);
 
-        $leave = Vacation::create([
-            'employee_id' => $employee_id,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'reason' => $request->reason,
-        ]);
+        $employee = Employee::findOrFail($employee_id);
+        $employee->vacations()->create($request->all());
 
-        return response()->json($leave, 201);
+        return redirect()->route('employees.show', $employee_id)->with('success', 'Отпуск добавлен.');
     }
 
-    public function update(Request $request, $id)
+    public function edit($employee_id, $vacation_id)
     {
-        $leave = Vacation::findOrFail($id);
+        $employee = Employee::findOrFail($employee_id);
+        $vacation = Vacation::findOrFail($vacation_id);
 
+        return view('vacations.edit', compact('employee', 'vacation'));
+    }
+
+    public function update(Request $request, $employee_id, $vacation_id)
+    {
         $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'reason' => 'nullable|string',
+            'reason' => 'nullable|string'
         ]);
 
-        $leave->update($request->all());
+        $vacation = Vacation::findOrFail($vacation_id);
+        $vacation->update($request->all());
 
-        return response()->json($leave);
+        return redirect()->route('employees.show', $employee_id)->with('success', 'Информация об отпуске обновлена.');
     }
 
-    public function destroy($id)
+    public function destroy($employee_id, $vacation_id)
     {
-        $leave = Vacation::findOrFail($id);
-        $leave->delete();
+        $vacation = Vacation::findOrFail($vacation_id);
+        $vacation->delete();
 
-        return response()->json(null, 204);
+        return redirect()->route('employees.show', $employee_id)->with('success', 'Отпуск удален.');
     }
 }

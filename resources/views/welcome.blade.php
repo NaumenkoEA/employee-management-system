@@ -11,7 +11,7 @@
 
 <div class="m-4">
     <a href="{{ route('employees.index') }}"
-       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Перейти к сотрудникам</a>
+       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список сотрудников</a>
 </div>
 
 <div class="m-4">
@@ -21,7 +21,8 @@
 
 <div class="m-4">
     <a href="{{ route('positions.index') }}"
-       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Перейти к должностям</a>
+       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список должностей</a>
 </div>
+
 </body>
 </html>

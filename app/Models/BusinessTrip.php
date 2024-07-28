@@ -12,7 +12,7 @@ class BusinessTrip extends Model
         'employee_id', 'start_date', 'end_date', 'destination', 'purpose'
     ];
 
-    public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employees(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Employee::class);
     }

@@ -25,10 +25,10 @@ class VacationFactory extends Factory
         $endDate = $faker->dateTimeBetween($startDate, '+40 days');
 
         return [
-            'employee_id' => Employee::factory(),
+            'employee_id' => Employee::inRandomOrder()->first()->id,
             'start_date' => $startDate->format('Y-m-d'),
             'end_date' => $endDate->format('Y-m-d'),
-            'reason' => $this->faker->sentence,
+            'reason' => $faker->sentence,
         ];
     }
 }

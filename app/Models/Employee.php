@@ -14,12 +14,12 @@ class Employee extends Model
         'department_id', 'hire_date', 'salary', 'phone', 'email', 'birth_date', 'address'
     ];
 
-    public function position(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function positions(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Position::class);
     }
 
-    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function departments(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
@@ -34,7 +34,8 @@ class Employee extends Model
         return $this->hasMany(Vacation::class);
     }
 
-    public function sickLeaves(): \Illuminate\Database\Eloquent\Relations\HasMany
+
+    public function sick_leaves(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(SickLeave::class);
     }

@@ -54,6 +54,7 @@
                         @method('DELETE')
                         <button type="submit" class="text-red-500">Удалить</button>
                     </form>
+                    <a href="{{ route('vacations.index', $employee->id) }}" class="text-green-500">Отпуска</a>
                 </td>
             </tr>
         @endforeach
