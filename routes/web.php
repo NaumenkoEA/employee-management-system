@@ -13,6 +13,14 @@ Route::get('/',function (){return view('welcome');})->name('home');
 
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
+Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+Route::get('/employees/{id}', [EmployeeController::class, 'show'])->name('employees.show');
+Route::get('/employees/{id}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
+Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employees.update');
+Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+
+
 Route::get('/employees/{id}/photo', [EmployeePhotoController::class, 'show']);
 Route::post('/employees/{id}/photo', [EmployeePhotoController::class, 'store']);
 
@@ -20,7 +28,8 @@ Route::get('/departments', [DepartmentController::class, 'index'])->name('depart
 
 Route::get('/positions', [PositionController::class, 'index'])->name('positions.index');
 Route::get('/positions/{id}', [PositionController::class, 'show']);
-Route::post('/employees/{id}/position', [PositionController::class, 'assign'])->name('positions.assign');
+Route::get('/employees/{employee_id}/assign-position', [PositionController::class, 'showAssignForm'])->name('positions.showAssignForm');
+Route::post('/employees/{employee_id}/assign-position', [PositionController::class, 'assign'])->name('positions.assign');
 Route::get('/employees/{id}/position', [PositionController::class, 'employeePosition']);
 
 Route::get('/employees/{employee_id}/leaves', [VacationController::class, 'index']);

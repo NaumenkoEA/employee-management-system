@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Departments</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
-<div class="container">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Отделы</title>
 
-    <div>
-        <a href="{{route('home')}}">На Главную</a>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="font-sans antialiased">
+<div class="mx-20 p-4 ">
+
+    <div class="mb-4">
+        <a href="{{ route('home') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            На Главную
+        </a>
     </div>
 
-    <h1>Отделы</h1>
+    <h1 class="text-2xl font-bold mb-4">Отделы</h1>
 
-    <table class="table table-striped">
+    <table class="min-w-full bg-white border border-gray-300">
         <thead>
         <tr>
-            <th>Отделы</th>
+            <th class="py-2 px-1 border-b">Отделы</th>
         </tr>
         </thead>
         <tbody>
         @foreach ($departments as $department)
             <tr>
 
-                <td>{{ $department->name}}</td>
+                <td class="py-2 px-1 border-b">{{ $department->name}}</td>
             </tr>
         @endforeach
         </tbody>

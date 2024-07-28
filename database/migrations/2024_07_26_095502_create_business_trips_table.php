@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('business_trips', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('employee_id')->constrained()->ondelete('cascade');
+            $table->foreignId('employee_id')->constrained()->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('goal_business_trip');

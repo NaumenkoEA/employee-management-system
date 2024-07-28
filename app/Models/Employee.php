@@ -33,4 +33,20 @@ class Employee extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function businessTrips(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(BusinessTrip::class);
+    }
+
+    // Добавьте другие отношения
+    public function vacations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Vacation::class);
+    }
+
+    public function sickLeaves(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SickLeave::class);
+    }
 }

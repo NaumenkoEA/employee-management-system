@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
@@ -7,49 +6,48 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $employees = Employee::all();
         return view('employee.index', compact('employees'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function create()
+    {
+        return view('employee.create');
+    }
+
     public function store(Request $request)
     {
         $data = $request->all();
         $employee = Employee::create($data);
-        return response()->json($employee, 201);
+        return redirect()->route('employees.index')->with('success', 'Сотрудник успешно создан');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        return Employee::findOrFail($id);
+        $employee = Employee::findOrFail($id);
+        return view('employee.show', compact('employee'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function edit($id)
+    {
+        $employee = Employee::findOrFail($id);
+        return view('employee.edit', compact('employee'));
+    }
+
+    public function update(Request $request, $id)
     {
         $employee = Employee::findOrFail($id);
         $employee->update($request->all());
-        return response()->json($employee, 200);
+        return redirect()->route('employees.index')->with('success', 'Информация о сотруднике успешно обновлена');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        Employee::findOrFail($id)->delete();
-        return response()->json(null, 204);
+        $employee = Employee::findOrFail($id);
+        $employee->delete();
+
+        return redirect()->route('employees.index')->with('success', 'Сотрудник успешно удален');
     }
 }
