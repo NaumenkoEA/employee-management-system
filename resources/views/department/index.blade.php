@@ -6,7 +6,13 @@
 </head>
 <body>
 <div class="container">
+
+    <div>
+        <a href="{{route('home')}}">На Главную</a>
+    </div>
+
     <h1>Отделы</h1>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -22,6 +28,7 @@
         @endforeach
         </tbody>
     </table>
+
 </div>
 </body>
 </html>

@@ -22,14 +22,16 @@ class EmployeeFactory extends Factory
     {
         $faker = \Faker\Factory::create('ru_RU');
 
+        $department = Department::inRandomOrder()->first();
+        $position = Position::inRandomOrder()->first();
         return [
 
 
             'last_name' => $faker->lastName, // Фамилия
             'first_name' => $faker->firstName, // Имя
             'middle_name' => $faker->middleName, //Отчество
-            'position_id' => Position::factory(), // Генерация должности
-            'department_id' => Department::factory(), // Генерация отдела
+            'position_id' => $position->id,
+            'department_id' => $department->id,
             'hire_date' => $faker->dateTimeBetween('-20 years', '-1 years')->format('Y-m-d'),
             'salary' => $faker->numberBetween(30000, 100000),
             'phone' => $faker->phoneNumber,

@@ -7,11 +7,23 @@ use Illuminate\Database\Seeder;
 
 class DepartmentsSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Department::factory()->count(5)->create();
+        $departments = [
+            'Отдел маркетинга',
+            'Отдел продаж',
+            'Бухгалтерия',
+            'HR отдел',
+            'IT отдел',
+            'Юридический отдел',
+            'Отдел логистики',
+            'Производственный отдел',
+            'Отдел закупок',
+            'Отдел обслуживания клиентов',
+        ];
+
+        foreach ($departments as $departmentName) {
+            Department::create(['name' => $departmentName]);
+        }
     }
 }

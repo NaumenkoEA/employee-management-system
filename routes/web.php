@@ -9,9 +9,7 @@ use App\Http\Controllers\VacationController;
 use App\Http\Controllers\SickLeaveController;
 use App\Http\Controllers\BusinessTripController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',function (){return view('welcome');})->name('home');
 
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
@@ -20,9 +18,9 @@ Route::post('/employees/{id}/photo', [EmployeePhotoController::class, 'store']);
 
 Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
 
-Route::get('/positions', [PositionController::class, 'index']);
+Route::get('/positions', [PositionController::class, 'index'])->name('positions.index');
 Route::get('/positions/{id}', [PositionController::class, 'show']);
-Route::post('/employees/{id}/position', [PositionController::class, 'assign']);
+Route::post('/employees/{id}/position', [PositionController::class, 'assign'])->name('positions.assign');
 Route::get('/employees/{id}/position', [PositionController::class, 'employeePosition']);
 
 Route::get('/employees/{employee_id}/leaves', [VacationController::class, 'index']);

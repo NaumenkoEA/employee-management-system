@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,8 @@ class PositionController extends Controller
 
     public function index()
     {
-        $positions = Position::with('department')->get();
-        return response()->json($positions);
+        $positions = Position::all();
+        return view('position.index', compact('positions'));
     }
 
     public function assign(Request $request, $employee_id)
@@ -24,13 +25,7 @@ class PositionController extends Controller
         $employee->position_id = $request->position_id;
         $employee->save();
 
-        return response()->json($employee, 200);
-    }
-
-    public function show(string $id)
-    {
-        $position = Position::with('department')->findOrFail($id);
-        return response()->json($position);
+        return view('position.assign', compact('employee'));
     }
 
     public function employeePosition($id)
