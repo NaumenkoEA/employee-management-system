@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assign Position</title>
+    <title>Назначение должности</title>
 
 </head>
 <body>
@@ -13,7 +13,7 @@
         <a href="{{route('home')}}">На Главную</a>
     </div>
 
-    <h1>Assign Position to Employee</h1>
+    <h1>Назначение должности сотруднику</h1>
 
     <form action="{{ route('employees.index') }}" method="GET">
         @csrf

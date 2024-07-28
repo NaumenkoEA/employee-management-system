@@ -6,14 +6,14 @@
     <title>Positions</title>
 </head>
 <body>
-<div class="container mt-5">
+<div class="">
 
     <div>
         <a href="{{route('home')}}">На Главную</a>
     </div>
 
     <h1>Positions</h1>
-    <table class="table table-bordered">
+    <table class="">
         <thead>
         <tr>
             <th>ID</th>
