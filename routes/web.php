@@ -37,12 +37,13 @@ Route::delete('employees/{employee_id}/vacations/{vacation_id}', [VacationContro
 
 
 
-//Route::get('/employees/{employee_id}/sick_leaves', [SickLeaveController::class, 'index']);
-//Route::post('/employees/{employee_id}/sick_leaves', [SickLeaveController::class, 'store']);
-//Route::get('/sick_leaves/{id}', [SickLeaveController::class, 'show']);
-//Route::put('/sick_leaves/{id}', [SickLeaveController::class, 'update']);
-//Route::delete('/sick_leaves/{id}', [SickLeaveController::class, 'destroy']);
-//
+Route::get('/employees/{employee_id}/sickLeaves', [SickLeaveController::class, 'index'])->name('sickLeave.index');
+Route::post('/employees/{employee_id}/sickLeaves', [SickLeaveController::class, 'store'])->name('sickLeave.store');
+Route::get('employees/{employee_id}/sickLeaves/create', [SickLeaveController::class, 'create'])->name('sickLeave.create');
+Route::get('employees/{employee_id}/sickLeaves/{sickLeave_id}/edit', [SickLeaveController::class, 'edit'])->name('sickLeave.edit');
+Route::put('employees/{employee_id}/sickLeaves/{sickLeave_id}', [SickLeaveController::class, 'update'])->name('sickLeave.update');
+Route::delete('employees/{employee_id}/sickLeaves/{sickLeave_id}', [SickLeaveController::class, 'destroy'])->name('sickLeave.destroy');
+
 //Route::get('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'index']);
 //Route::post('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'store']);
 //Route::get('/business_trips/{id}', [BusinessTripController::class, 'show']);

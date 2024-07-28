@@ -31,7 +31,7 @@ class Employee extends Model
         return $this->hasMany(BusinessTrip::class);
     }
 
-    public function vacation(): HasMany
+    public function vacations(): HasMany
     {
         return $this->hasMany(Vacation::class);
     }

@@ -10,7 +10,7 @@ class VacationController extends Controller
 {
     public function index($employee_id)
     {
-        $employee = Employee::with('vacations')->findOrFail($employee_id);
+        $employee = Employee::with('vacation')->findOrFail($employee_id);
         return view('vacations.index', compact('employee'));
     }
 
