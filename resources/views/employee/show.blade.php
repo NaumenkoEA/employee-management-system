@@ -42,11 +42,11 @@
         </tr>
         <tr class="border-t border-gray-200">
             <th class="text-left p-2">Должность:</th>
-            <td class="p-2">{{ $employee->position->title }}</td>
+            <td class="p-2">{{ $employee->position ? $employee->position->title : 'Не указана' }}</td>
         </tr>
         <tr class="border-t border-gray-200">
             <th class="text-left p-2">Отдел:</th>
-            <td class="p-2">{{ $employee->department->name }}</td>
+            <td class="p-2">{{ $employee->department ? $employee->department->name : 'Не указан' }}</td>
         </tr>
         <tr class="border-t border-gray-200">
             <th class="text-left p-2">Дата приема на работу:</th>

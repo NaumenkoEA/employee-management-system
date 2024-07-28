@@ -28,12 +28,12 @@ Route::post('/employees/{id}/photo', [EmployeePhotoController::class, 'store']);
 Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.index');
 Route::get('/positions', [PositionController::class, 'index'])->name('positions.index');
 
-Route::get('employees/{employee}/vacations', [VacationController::class, 'index'])->name('vacations.index');
-Route::get('employees/{employee}/vacations/create', [VacationController::class, 'create'])->name('vacations.create');
-Route::post('employees/{employee}/vacations', [VacationController::class, 'store'])->name('vacations.store');
-Route::get('employees/{employee}/vacations/{vacation}/edit', [VacationController::class, 'edit'])->name('vacations.edit');
-Route::put('employees/{employee}/vacations/{vacation}', [VacationController::class, 'update'])->name('vacations.update');
-Route::delete('employees/{employee}/vacations/{vacation}', [VacationController::class, 'destroy'])->name('vacations.destroy');
+Route::get('employees/{employee_id}/vacations', [VacationController::class, 'index'])->name('vacations.index');
+Route::get('employees/{employee_id}/vacations/create', [VacationController::class, 'create'])->name('vacations.create');
+Route::post('employees/{employee_id}/vacations', [VacationController::class, 'store'])->name('vacations.store');
+Route::get('employees/{employee_id}/vacations/{vacation_id}/edit', [VacationController::class, 'edit'])->name('vacations.edit');
+Route::put('employees/{employee_id}/vacations/{vacation_id}', [VacationController::class, 'update'])->name('vacations.update');
+Route::delete('employees/{employee_id}/vacations/{vacation_id}', [VacationController::class, 'destroy'])->name('vacations.destroy');
 
 
 

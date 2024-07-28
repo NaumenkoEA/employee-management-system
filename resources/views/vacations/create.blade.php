@@ -10,7 +10,8 @@
 <div class="container mx-auto p-4">
 
     <div class="mb-4">
-        <a href="{{ route('vacations.index', $employee->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
+        <a href="{{ route('vacations.index', $employee->id) }}"
+           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
     </div>
 
     <h1 class="text-2xl font-bold mb-4">Добавить отпуск для: {{ $employee->first_name }} {{ $employee->last_name }}</h1>
@@ -20,17 +21,20 @@
 
         <div class="m-2">
             <label for="start_date" class="block text-gray-700">Дата начала:</label>
-            <input type="date" name="start_date" id="start_date" class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2" required>
+            <input type="date" name="start_date" id="start_date"
+                   class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2" required>
         </div>
 
         <div class="m-2">
             <label for="end_date" class="block text-gray-700">Дата окончания:</label>
-            <input type="date" name="end_date" id="end_date" class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2" required>
+            <input type="date" name="end_date" id="end_date"
+                   class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2" required>
         </div>
 
         <div class="m-2 col-span-2">
             <label for="reason" class="block text-gray-700">Причина:</label>
-            <textarea name="reason" id="reason" class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2"></textarea>
+            <textarea name="reason" id="reason"
+                      class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2"></textarea>
         </div>
 
         <button type="submit" class="col-span-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">

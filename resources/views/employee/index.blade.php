@@ -15,7 +15,8 @@
         <a href="{{ route('home') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             На Главную
         </a>
-        <a href="{{ route('employees.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{ route('employees.create') }}"
+           class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             Добавить сотрудника
         </a>
     </div>
@@ -47,14 +48,17 @@
                 <td class="border px-4 py-2">{{ $employee->middle_name }}</td>
                 <td class="border px-4 py-2 flex justify-around">
                     <a href="{{ route('employees.show', $employee->id) }}" class="text-blue-500 px-2">Просмотр</a>
-                    <a href="{{ route('employees.edit', $employee->id) }}" class="text-yellow-500 px-2">Редактировать</a>
-                    <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="inline-block px-2"
+                    <a href="{{ route('employees.edit', $employee->id) }}"
+                       class="text-yellow-500 px-2">Редактировать</a>
+                    <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
+                          class="inline-block px-2"
                           onsubmit="return confirm('Вы уверены, что хотите удалить этого сотрудника?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-500">Удалить</button>
                     </form>
-                    <a href="{{ route('vacations.index', $employee->id) }}" class="text-green-500">Отпуска</a>
+                    <a href="{{ route('vacations.index', $employee->id) }}"
+                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Отпуска</a>
                 </td>
             </tr>
         @endforeach

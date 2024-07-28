@@ -10,12 +10,9 @@ class VacationController extends Controller
 {
     public function index($employee_id)
     {
-        // Загрузка сотрудника и его отпусков
         $employee = Employee::with('vacations')->findOrFail($employee_id);
         return view('vacations.index', compact('employee'));
     }
-
-
 
     public function create($employee_id)
     {
@@ -32,9 +29,9 @@ class VacationController extends Controller
         ]);
 
         $employee = Employee::findOrFail($employee_id);
-        $employee->vacations()->create($request->all());
+        $employee->vacations()->create($request->only(['start_date', 'end_date', 'reason']));
 
-        return redirect()->route('employees.show', $employee_id)->with('success', 'Отпуск добавлен.');
+        return redirect()->route('vacations.index', $employee_id)->with('success', 'Отпуск добавлен.');
     }
 
     public function edit($employee_id, $vacation_id)
@@ -54,9 +51,9 @@ class VacationController extends Controller
         ]);
 
         $vacation = Vacation::findOrFail($vacation_id);
-        $vacation->update($request->all());
+        $vacation->update($request->only(['start_date', 'end_date', 'reason']));
 
-        return redirect()->route('employees.show', $employee_id)->with('success', 'Информация об отпуске обновлена.');
+        return redirect()->route('vacations.index', $employee_id)->with('success', 'Информация об отпуске обновлена.');
     }
 
     public function destroy($employee_id, $vacation_id)
@@ -64,6 +61,6 @@ class VacationController extends Controller
         $vacation = Vacation::findOrFail($vacation_id);
         $vacation->delete();
 
-        return redirect()->route('employees.show', $employee_id)->with('success', 'Отпуск удален.');
+        return redirect()->route('vacations.index', $employee_id)->with('success', 'Отпуск удален.');
     }
 }
