@@ -12,6 +12,22 @@ class PositionsSeeder extends Seeder
      */
     public function run(): void
     {
-        Position::factory()->count(20)->create();
+        $positions = [
+            'Менеджер',
+            'Разработчик',
+            'Аналитик',
+            'Бухгалтер',
+            'Специалист по продажам',
+            'HR-менеджер',
+            'Юрист',
+            'Инженер',
+            'Секретарь',
+            'Рекрутер',
+            'Директор'
+        ];
+
+        foreach ($positions as $positionsTitle) {
+            Position::create(['title' => $positionsTitle]);
+        }
     }
 }
