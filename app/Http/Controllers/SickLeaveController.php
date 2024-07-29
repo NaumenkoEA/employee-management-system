@@ -29,7 +29,7 @@ class SickLeaveController extends Controller
         ]);
 
         $employee = Employee::findOrFail($employee_id);
-        $employee->sickLeaves()->create($request->only(['start_date', 'end_date', 'reason']));
+        $employee->sickLeave()->create($request->only(['start_date', 'end_date', 'reason']));
 
         return redirect()->route('sickLeave.index', $employee_id)->with('success', 'Больничный добавлен.');
     }
@@ -62,6 +62,6 @@ class SickLeaveController extends Controller
         $sickLeave = SickLeave::findOrFail($sickLeave_id);
         $sickLeave->delete();
 
-        return redirect()->route('vacations.index', $employee_id)->with('success', 'Отпуск удален.');
+        return redirect()->route('sickLeave.index', $employee_id)->with('success', 'Отпуск удален.');
     }
 }
