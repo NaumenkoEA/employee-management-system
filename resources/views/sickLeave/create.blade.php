@@ -10,13 +10,13 @@
 <div class="container mx-auto p-4">
 
     <div class="mb-4">
-        <a href="{{ route('vacations.index', $employee->id) }}"
+        <a href="{{ route('sickLeave.index', $employee->id) }}"
            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
     </div>
 
     <h1 class="text-2xl font-bold mb-4">Выписать больничный для: {{ $employee->first_name }} {{ $employee->last_name }}</h1>
 
-    <form action="{{ route('vacations.store', $employee->id) }}" method="POST" class="grid grid-cols-2 gap-4">
+    <form action="{{ route('sickLeave.store', $employee->id) }}" method="POST" class="grid grid-cols-2 gap-4">
         @csrf
 
         <div class="m-2">

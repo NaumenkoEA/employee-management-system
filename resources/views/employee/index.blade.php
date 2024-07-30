@@ -51,6 +51,7 @@
                     <a href="{{route('employees.edit', $employee->id)}}" class="text-yellow-500 px-1">Редактировать</a>
                     <a href="{{route('vacations.index', $employee->id)}}" class="text-emerald-500 px-1">Отпуска</a>
                     <a href="{{route('sickLeave.index', $employee->id)}}" class="text-violet-500 px-1">Больничные</a>
+                    <a href="{{route('businessTrip.index', $employee->id)}}" class="text-black px-1">Командировки</a>
 
 
                     <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"

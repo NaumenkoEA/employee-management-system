@@ -10,14 +10,14 @@
 <div class="container mx-auto p-4">
 
     <div class="mb-4">
-        <a href="{{ route('vacations.index', $employee->id) }}"
+        <a href="{{ route('sickLeave.index', $employee->id) }}"
            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
     </div>
 
     <h1 class="text-2xl font-bold mb-4">Редактирование больничного
         для: {{ $employee->first_name }} {{ $employee->last_name }}</h1>
 
-    <form action="{{ route('vacations.update', [$employee->id, $sickLeave->id]) }}" method="POST"
+    <form action="{{ route('sickLeave.update', [$employee->id, $sickLeave->id]) }}" method="POST"
           class="grid grid-cols-2 gap-4">
         @csrf
         @method('PUT')
@@ -39,7 +39,7 @@
         <div class="m-2 col-span-2">
             <label for="reason" class="block text-gray-700">Болезнь:</label>
             <textarea name="reason" id="reason"
-                      class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2">{{ $sickLeave->reason }}</textarea>
+                      class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2"></textarea>
         </div>
 
         <button type="submit" class="col-span-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">

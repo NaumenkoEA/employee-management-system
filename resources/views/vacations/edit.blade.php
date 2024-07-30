@@ -39,7 +39,7 @@
         <div class="m-2 col-span-2">
             <label for="reason" class="block text-gray-700">Причина:</label>
             <textarea name="reason" id="reason"
-                      class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2">{{ $vacation->reason }}</textarea>
+                      class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md p-2"></textarea>
         </div>
 
         <button type="submit" class="col-span-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">

@@ -16,7 +16,8 @@
            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
     </div>
 
-    <h1 class="text-2xl font-bold mb-4">Больничные сотрудника: {{ $employee->first_name }} {{ $employee->last_name }}</h1>
+    <h1 class="text-2xl font-bold mb-4">Больничные
+        сотрудника: {{ $employee->first_name }} {{ $employee->last_name }}</h1>
 
     <table class="table-auto w-full border-collapse">
         <thead>
@@ -36,10 +37,11 @@
                 <td class="border px-4 py-2">{{ $sickLeave->end_date }}</td>
                 <td class="border px-4 py-2">{{ $sickLeave->reason }}</td>
                 <td class="border px-4 py-2 flex justify-around">
-                    <a href="{{ route('vacations.edit', [$employee->id, $sickLeave->id]) }}"
+                    <a href="{{ route('sickLeave.edit', [$employee->id, $sickLeave->id]) }}"
                        class="text-yellow-500 px-2">Редактировать</a>
-                    <form action="{{ route('sickLeave.destroy', ['employee_id' => $employee->id, 'sickLeave_id' => $sickLeave->id]) }}"
-                          method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот больничный?');">
+                    <form
+                        action="{{ route('sickLeave.destroy', ['employee_id' => $employee->id, 'sickLeave_id' => $sickLeave->id]) }}"
+                        method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот больничный?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-500">Удалить</button>

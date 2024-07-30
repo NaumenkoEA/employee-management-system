@@ -15,6 +15,7 @@ class BusinessTrip extends Model
         'goal_business_trip' ,
         'country' ,
         'city' ,
+        'employee_id'
     ];
 
     public function employees(): \Illuminate\Database\Eloquent\Relations\BelongsTo
