@@ -38,13 +38,13 @@
                 <td class="border px-4 py-2 flex justify-around">
                     <a href="{{ route('vacations.edit', [$employee->id, $sickLeave->id]) }}"
                        class="text-yellow-500 px-2">Редактировать</a>
-                    <form action="{{ route('vacations.destroy', [$employee->id, $sickLeave->id]) }}" method="POST"
-                          class="inline-block px-2"
-                          onsubmit="return confirm('Вы уверены, что хотите удалить этот больничный?');">
+                    <form action="{{ route('sickLeave.destroy', ['employee_id' => $employee->id, 'sickLeave_id' => $sickLeave->id]) }}"
+                          method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот больничный?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-500">Удалить</button>
                     </form>
+
                 </td>
             </tr>
         @endforeach

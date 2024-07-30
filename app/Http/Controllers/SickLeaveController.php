@@ -10,7 +10,7 @@ class SickLeaveController extends Controller
 {
     public function index($employee_id)
     {
-        $employee = Employee::with('sickLeave')->findOrFail($employee_id);
+        $employee = Employee::with('sickLeaves')->findOrFail($employee_id);
         return view('sickLeave.index', compact('employee'));
     }
 
@@ -29,7 +29,7 @@ class SickLeaveController extends Controller
         ]);
 
         $employee = Employee::findOrFail($employee_id);
-        $employee->sickLeave()->create($request->only(['start_date', 'end_date', 'reason']));
+        $employee->sickLeaves()->create($request->only(['start_date', 'end_date', 'reason']));
 
         return redirect()->route('sickLeave.index', $employee_id)->with('success', 'Больничный добавлен.');
     }
@@ -52,7 +52,6 @@ class SickLeaveController extends Controller
 
         $sickLeave = SickLeave::findOrFail($sickLeave_id);
         $sickLeave->update($request->only(['start_date', 'end_date', 'reason']));
-
 
         return redirect()->route('sickLeave.index', $employee_id)->with('success', 'Информация об отпуске обновлена.');
     }

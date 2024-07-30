@@ -7,22 +7,26 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased ">
+<body class=" ">
 
-<div class="m-4">
-    <a href="{{ route('employees.index') }}"
-       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список сотрудников</a>
+<div class="flex flex-col justify-center items-center h-screen  ">
+    <div class=" mb-5">
+        <a href="{{ route('employees.index') }}"
+           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список сотрудников</a>
+    </div>
+
+    <div class="mb-5">
+        <a href="{{ route('departments.index') }}"
+           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список отделов</a>
+    </div>
+
+    <div class="mb-5">
+        <a href="{{ route('positions.index') }}"
+           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список должностей</a>
+    </div>
+
 </div>
 
-<div class="m-4">
-    <a href="{{ route('departments.index') }}"
-       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список отделов</a>
-</div>
-
-<div class="m-4">
-    <a href="{{ route('positions.index') }}"
-       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Список должностей</a>
-</div>
 
 </body>
 </html>

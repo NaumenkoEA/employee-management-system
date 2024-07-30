@@ -10,11 +10,9 @@ class SickLeave extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'employee_id', 'start_date', 'end_date', 'reason'
-    ];
+    protected $fillable = ['start_date', 'end_date', 'reason', 'employee_id'];
 
-    public function employees(): BelongsTo
+    public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
     }

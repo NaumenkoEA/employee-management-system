@@ -44,6 +44,8 @@ Route::get('employees/{employee_id}/sickLeaves/{sickLeave_id}/edit', [SickLeaveC
 Route::put('employees/{employee_id}/sickLeaves/{sickLeave_id}', [SickLeaveController::class, 'update'])->name('sickLeave.update');
 Route::delete('employees/{employee_id}/sickLeaves/{sickLeave_id}', [SickLeaveController::class, 'destroy'])->name('sickLeave.destroy');
 
+
+
 //Route::get('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'index']);
 //Route::post('/employees/{employee_id}/business_trips', [BusinessTripController::class, 'store']);
 //Route::get('/business_trips/{id}', [BusinessTripController::class, 'show']);

@@ -10,7 +10,7 @@ class VacationController extends Controller
 {
     public function index($employee_id)
     {
-        $employee = Employee::with('vacation')->findOrFail($employee_id);
+        $employee = Employee::with('vacations')->findOrFail($employee_id);
         return view('vacations.index', compact('employee'));
     }
 
@@ -51,7 +51,7 @@ class VacationController extends Controller
         ]);
 
         $vacation = Vacation::findOrFail($vacation_id);
-        $vacation->update($request->only(['start_date', 'end_date', 'reason']));
+        $vacation->update($request->all());
 
         return redirect()->route('vacations.index', $employee_id)->with('success', 'Информация об отпуске обновлена.');
     }
